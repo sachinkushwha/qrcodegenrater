@@ -73,13 +73,14 @@ function App() {
         <div
           className="mt-8 sm:mt-12 bg-white shadow-2xl p-6 sm:p-8 rounded-2xl flex flex-col items-center space-y-3 sm:space-y-4 w-full max-w-sm"
         >
-        <div ref={refqur}>
+        <div ref={refqur} >
           <QRCodeCanvas
             value={text}
             size={150}
             bgColor="#ffffff"
             fgColor="#000000"
             level="H"
+            includeMargin={true}
           /></div>
           <p className="text-center text-gray-600 text-sm sm:text-base">
             📱 Scan using QR scanner or Google Lens

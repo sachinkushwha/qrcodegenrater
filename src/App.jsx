@@ -13,14 +13,34 @@ function App() {
   };
 
   const handledownload = () => {
-    const canvas = refqur.current.querySelector('QRCodeCanvas');
-    const url = canvas.toDataURL('image/png');
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'qr-code.png';
-    a.click();
-    console.log('download');
-  };
+  const canvas = refqur.current.querySelector("canvas");
+  if (!canvas) return;
+
+  const context = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+
+  // Create a temporary white background
+  const tempCanvas = document.createElement("canvas");
+  tempCanvas.width = width;
+  tempCanvas.height = height;
+  const tempContext = tempCanvas.getContext("2d");
+
+  // Fill with white background
+  tempContext.fillStyle = "#ffffff";
+  tempContext.fillRect(0, 0, width, height);
+
+  // Draw original QR code over it
+  tempContext.drawImage(canvas, 0, 0);
+
+  // Convert to image and download
+  const url = tempCanvas.toDataURL("image/png");
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "qr-code.png";
+  a.click();
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#eef2f3] to-[#8e9eab] flex flex-col items-center justify-start px-4 py-10 font-sans">

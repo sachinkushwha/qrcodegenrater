@@ -13,7 +13,7 @@ function App() {
   };
 
   const handledownload = () => {
-    const canvas = refqur.current.querySelector('canvas');
+    const canvas = refqur.current.querySelector('QRCodeCanvas');
     const url = canvas.toDataURL('image/png');
     const a = document.createElement('a');
     a.href = url;
@@ -51,7 +51,6 @@ function App() {
 
       {text && (
         <div
-          
           className="mt-8 sm:mt-12 bg-white shadow-2xl p-6 sm:p-8 rounded-2xl flex flex-col items-center space-y-3 sm:space-y-4 w-full max-w-sm"
         >
         <div ref={refqur}>

@@ -56,7 +56,7 @@ function App() {
         >
           <QRCodeCanvas
             value={text}
-            size={150}
+            size={100}
             bgColor="#ffffff"
             fgColor="#000000"
             level="H"
